@@ -19,9 +19,8 @@ const messagedRecently = new Set();
 const sendRecently = new Set();
 
 //#region database connection 
-mongoose.connect(process.env.DB, {useNewUrlParser : true, useUnifiedTopology : true, bufferCommands : false, useCreateIndex : false, useFindAndModify: false})
-           .then(res => console.log("connected"))
-           .catch(err => console.log(err))
+(async ()=>{await mongoose.connect(process.env.DB, {useNewUrlParser : true, useUnifiedTopology : true, bufferCommands : false, useCreateIndex : false, useFindAndModify: false}); console.log("connected")})()
+
            //#endregion
            
            //#region  bot-command-initialization 
