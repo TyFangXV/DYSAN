@@ -21,7 +21,7 @@ const getNews = async(tags,discord, client, channelID)=>{
         } catch (error) {
          console.log(error.message)
         }        
-}
+}  
 
 
 
