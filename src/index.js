@@ -56,59 +56,7 @@ client.on("ready", async() => {
                });
                
                
-
-   //checks if the registery isnt empty
- const serverRegisteries = await registery.find();
- if(serverRegisteries.length !== 0)
-   {
-      //save the data locally in a json file
-      if(!fs.existsSync("./data.json"))
-      {
-         console.log("file made")
-         serverRegisteries.forEach(data => {
-            fs.writeFileSync("./data.json", JSON.stringify(data))
-         });         
-      }
-
-      //if the data is saved locally 
-      if(fs.existsSync('./data.json'))
-         {
-            //checks every 3 sec whether if its time to send the message 
-            //if it is then add the server id to the set so that it wont be send multiple times
-            setInterval(async()=>{
-               const currentTime = moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase();
-               let timing = JSON.parse(fs.readFileSync("./data.json"));
-               if(timing.time.toLowerCase() == currentTime && !sendRecently.has(timing._id))
-                 {
-                    console.log("running")
-                    await news(discord, client,timing.channelId )
-                    sendRecently.add(timing._id)
-                 }
-                 
-               }, 5000)
                
-               //clear the set after a min   
-               setTimeout(() => {
-                  let timing = JSON.parse(fs.readFileSync("./data.json"));
-                  if(sendRecently.has(timing._id))
-                    {
-                        sendRecently.delete(timing._id)
-                        console.log("removed")                       
-                    }
-
-               }, 60000);
-               
-               
-
-         }
-   }   
-}, 10000);
-
-
-
-//#endregion
-
-
 //#endregion
 
 
@@ -120,20 +68,20 @@ client.on("message", (message) => {
 
    if (message.content.startsWith(prefix)) 
    {
-
+      
       //trim the prefix out of the message to get the command and then convert any uppercase letter to lowercase
       const command = message.content.slice(prefix.length).trim(" ").toLowerCase().split(" ")[0];
       const args = message.content.slice(prefix.length).trim(" ").toLowerCase().slice(command.length).trim(" ").split(" ");
 
       let skip = false;
       const folders = fs.readdirSync("./src/commands");
-
-         folders.forEach(async(folder) => {
-               //loops through the folder and get all the files that end with js
-               const commandFiles = fs.readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js"));
-               //loops through all the files and if the name of the file matches the command then execute that command
+      
+      folders.forEach(async(folder) => {
+         //loops through the folder and get all the files that end with js
+         const commandFiles = fs.readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js"));
+         //loops through all the files and if the name of the file matches the command then execute that command
                if (!skip) {
-                     for (const file of commandFiles)    
+                  for (const file of commandFiles)    
                      {
                         if (file.split(".")[0] == command) 
                         {
@@ -142,15 +90,15 @@ client.on("message", (message) => {
                             if(client.command.get(command).status !== "dev")   
                              {
 
-                            if (messagedRecently.has(message.author.id)) 
+                                if (messagedRecently.has(message.author.id)) 
                             {
                                let card = new discord.MessageEmbed;
-                                 card
+                               card
                                    .setColor("#fa078d")
                                    .setTitle(`**cooldown ${coolDown / 1000}s**`)
                                    .setDescription("ayo, hold up")
                                message.channel.send(card);
-                            } else 
+                              } else 
                             {
                               client.command.get(command).execute(message, discord, args, client);
                                 // Adds the user to the set so that they can't talk for a minute
@@ -159,13 +107,13 @@ client.on("message", (message) => {
                                 // Removes the user from the set after a minute
                                 setTimeout(() => {
                                   messagedRecently.delete(message.author.id);
-                                }, coolDown);
+                                 }, coolDown);
                             }
                              }else
                              {
                                 message.channel.send("The command is still under development")
                                 skip = true;
-                             }
+                              }
                            } catch (error) {
                               message.channel.send(`error at ${file.split(".")[0]}: ${error.message}`);
                               skip = true;
@@ -178,15 +126,65 @@ client.on("message", (message) => {
                   return;
                }
          });
-
+         
       skip = false;
    }
 });
  //#endregion
+ //#region timed message
+ 
+    //checks if the registery isnt empty
+  const serverRegisteries = await registery.find();
+  if(serverRegisteries.length !== 0)
+    {
+       //save the data locally in a json file
+       if(!fs.existsSync("./data.json"))
+       {
+          console.log("file made")
+          serverRegisteries.forEach(data => {
+             fs.writeFileSync("./data.json", JSON.stringify(data))
+          });         
+       }
+ 
+       //if the data is saved locally 
+       if(fs.existsSync('./data.json'))
+          {
+             //checks every 3 sec whether if its time to send the message 
+             //if it is then add the server id to the set so that it wont be send multiple times
+             setInterval(async()=>{
+                const currentTime = moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase();
+                let timing = JSON.parse(fs.readFileSync("./data.json"));
+                if(timing.time.toLowerCase() == currentTime && !sendRecently.has(timing._id))
+                  {
+                     console.log("running")
+                     await news(discord, client,timing.channelId )
+                     sendRecently.add(timing._id)
+                  }
+                  
+                }, 5000)
+                
+                //clear the set after a min   
+                setTimeout(() => {
+                   let timing = JSON.parse(fs.readFileSync("./data.json"));
+                   if(sendRecently.has(timing._id))
+                     {
+                         sendRecently.delete(timing._id)
+                         console.log("removed")                       
+                     }
+ 
+                }, 60000);
+                
+                
+ 
+          }
+    }   
+ }, 10000);
+ 
+ //#endregion
+ 
 
-//#region timed message
 
-//update the data.json file every 3 hours
+ //update the data.json file every 3 hours
  setInterval(() => {
    const serverRegisteries = registery.find()
    serverRegisteries.forEach(data => {
