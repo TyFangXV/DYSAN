@@ -55,7 +55,7 @@ client.on("ready", async() => {
                   console.log(`${guild.name} | ${guild.id}`);
                });
                
-//#region timed message
+               
 
    //checks if the registery isnt empty
  const serverRegisteries = await registery.find();
@@ -184,7 +184,7 @@ client.on("message", (message) => {
 });
  //#endregion
 
-
+//#region timed message
 
 //update the data.json file every 3 hours
  setInterval(() => {
