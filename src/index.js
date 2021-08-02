@@ -22,38 +22,43 @@ const sendRecently = new Set();
 mongoose.connect(process.env.DB, {useNewUrlParser : true, useUnifiedTopology : true, bufferCommands : false, useCreateIndex : false, useFindAndModify: false})
            .then(res => console.log("connected"))
            .catch(err => console.log(err))
-//#endregion
-
-//#region  bot-command-initialization 
-
-const folders = fs.readdirSync("./src/commands")
-
-folders.forEach(async(folder) => {
-  //searches for file that end with .js
-  const commandFiles =  fs.readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js"));
-
-  //sets every file that end with .js as a command
-
-    for (const file of commandFiles) 
-    {
-      const command = require(`./commands/${folder}/${file}`);
-      client.command.set(command.name, command, command.status);
-    }
-
-});
-//#endregion
-
-
-//#region  discord-bot
-
-//#region discord-bot start
-
+           //#endregion
+           
+           //#region  bot-command-initialization 
+           
+           const folders = fs.readdirSync("./src/commands")
+           
+           folders.forEach(async(folder) => {
+              //searches for file that end with .js
+              const commandFiles =  fs.readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js"));
+              
+              //sets every file that end with .js as a command
+              
+              for (const file of commandFiles) 
+              {
+                 const command = require(`./commands/${folder}/${file}`);
+                 client.command.set(command.name, command, command.status);
+               }
+               
+            });
+            //#endregion
+            
+            
+            //#region  discord-bot
+            
+            //#region discord-bot start
+            
 client.on("ready", async() => {
-  client.guilds.cache.forEach((guild) => {
-      console.log(`${guild.name} | ${guild.id}`);
-  });
+   client.user.setActivity(" : '$ help'", { type: "WATCHING" });
+   console.log("bot online");
+   console.log(`current time ${moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase()}`);
+               client.guilds.cache.forEach((guild) => {
+                  console.log(`${guild.name} | ${guild.id}`);
+               });
+               
 //#region timed message
- //checks if the registery isnt empty
+setTimeout(() => {
+   //checks if the registery isnt empty
  const serverRegisteries = await registery.find();
  if(serverRegisteries.length !== 0)
    {
@@ -97,14 +102,13 @@ client.on("ready", async() => {
                
 
          }
-   }
+   }   
+}, 10000);
+
 
 
 //#endregion
 
-      client.user.setActivity(" : '$ help'", { type: "WATCHING" });
-      console.log("bot online");
-      console.log(`current time ${moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase()}`);
 });
 
 //#endregion
