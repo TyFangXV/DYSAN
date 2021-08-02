@@ -57,7 +57,7 @@ client.on("ready", async() => {
                });
                
 //#region timed message
-setTimeout(() => {
+setTimeout(async() => {
    //checks if the registery isnt empty
  const serverRegisteries = await registery.find();
  if(serverRegisteries.length !== 0)
