@@ -60,6 +60,7 @@ client.on("ready", async() => {
       //save the data locally in a json file
       if(!fs.existsSync("./data.json"))
       {
+         console.log("file made")
          serverRegisteries.forEach(data => {
             fs.writeFileSync("./data.json", JSON.stringify(data))
          });         
