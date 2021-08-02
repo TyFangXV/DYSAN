@@ -1,0 +1,142 @@
+{
+    "response": {
+        "status": "ok",
+        "userTier": "developer",
+        "total": 40422,
+        "startIndex": 1,
+        "pageSize": 10,
+        "currentPage": 1,
+        "pages": 4043,
+        "orderBy": "relevance",
+        "results": [
+            {
+                "id": "business/2021/apr/20/hair-by-amazon-tech-giant-to-open-hi-tech-salon-in-london",
+                "type": "article",
+                "sectionId": "business",
+                "sectionName": "Business",
+                "webPublicationDate": "2021-04-20T18:20:30Z",
+                "webTitle": "Hair by Amazon? Tech giant to open hi-tech salon in London",
+                "webUrl": "https://www.theguardian.com/business/2021/apr/20/hair-by-amazon-tech-giant-to-open-hi-tech-salon-in-london",
+                "apiUrl": "https://content.guardianapis.com/business/2021/apr/20/hair-by-amazon-tech-giant-to-open-hi-tech-salon-in-london",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "us-news/2021/jun/24/john-mcafee-the-tech-pioneer-turned-fugitive",
+                "type": "article",
+                "sectionId": "us-news",
+                "sectionName": "US news",
+                "webPublicationDate": "2021-06-24T04:57:31Z",
+                "webTitle": "John McAfee: the tech pioneer turned fugitive",
+                "webUrl": "https://www.theguardian.com/us-news/2021/jun/24/john-mcafee-the-tech-pioneer-turned-fugitive",
+                "apiUrl": "https://content.guardianapis.com/us-news/2021/jun/24/john-mcafee-the-tech-pioneer-turned-fugitive",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "uk-news/2021/may/28/digested-week-comedy-cummings-and-tech-tactics",
+                "type": "article",
+                "sectionId": "uk-news",
+                "sectionName": "UK news",
+                "webPublicationDate": "2021-05-28T11:16:13Z",
+                "webTitle": "Digested Week: Comedy Cummings and tech tactics | Lucy Mangan ",
+                "webUrl": "https://www.theguardian.com/uk-news/2021/may/28/digested-week-comedy-cummings-and-tech-tactics",
+                "apiUrl": "https://content.guardianapis.com/uk-news/2021/may/28/digested-week-comedy-cummings-and-tech-tactics",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "music/2021/jun/28/robot-rock-can-big-tech-pick-pops-next-megastar",
+                "type": "article",
+                "sectionId": "music",
+                "sectionName": "Music",
+                "webPublicationDate": "2021-06-28T05:00:45Z",
+                "webTitle": "‘A talent scout can’t go to 100 shows a night’ – how big data is choosing the next pop stars",
+                "webUrl": "https://www.theguardian.com/music/2021/jun/28/robot-rock-can-big-tech-pick-pops-next-megastar",
+                "apiUrl": "https://content.guardianapis.com/music/2021/jun/28/robot-rock-can-big-tech-pick-pops-next-megastar",
+                "isHosted": false,
+                "pillarId": "pillar/arts",
+                "pillarName": "Arts"
+            },
+            {
+                "id": "technology/2021/jul/20/government-sets-up-375m-fund-for-gamechanging-uk-tech-firms",
+                "type": "article",
+                "sectionId": "technology",
+                "sectionName": "Technology",
+                "webPublicationDate": "2021-07-19T23:01:10Z",
+                "webTitle": "Government sets up £375m fund for ‘gamechanging’ UK tech firms",
+                "webUrl": "https://www.theguardian.com/technology/2021/jul/20/government-sets-up-375m-fund-for-gamechanging-uk-tech-firms",
+                "apiUrl": "https://content.guardianapis.com/technology/2021/jul/20/government-sets-up-375m-fund-for-gamechanging-uk-tech-firms",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "film/2021/jul/19/air-conditioner-review-tech-begins-to-fail-in-enigmatic-angolan-afrofuturism",
+                "type": "article",
+                "sectionId": "film",
+                "sectionName": "Film",
+                "webPublicationDate": "2021-07-19T13:00:01Z",
+                "webTitle": "Air Conditioner review – tech begins to fail in enigmatic Angolan Afrofuturism",
+                "webUrl": "https://www.theguardian.com/film/2021/jul/19/air-conditioner-review-tech-begins-to-fail-in-enigmatic-angolan-afrofuturism",
+                "apiUrl": "https://content.guardianapis.com/film/2021/jul/19/air-conditioner-review-tech-begins-to-fail-in-enigmatic-angolan-afrofuturism",
+                "isHosted": false,
+                "pillarId": "pillar/arts",
+                "pillarName": "Arts"
+            },
+            {
+                "id": "world/2021/may/02/rome-colosseum-to-gain-hi-tech-arena-floor",
+                "type": "article",
+                "sectionId": "world",
+                "sectionName": "World news",
+                "webPublicationDate": "2021-05-02T16:18:36Z",
+                "webTitle": "Rome’s Colosseum to gain hi-tech arena floor",
+                "webUrl": "https://www.theguardian.com/world/2021/may/02/rome-colosseum-to-gain-hi-tech-arena-floor",
+                "apiUrl": "https://content.guardianapis.com/world/2021/may/02/rome-colosseum-to-gain-hi-tech-arena-floor",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "us-news/2021/jul/07/will-trumps-big-tech-lawsuits-succeed-experts-say-chances-are-slim",
+                "type": "article",
+                "sectionId": "us-news",
+                "sectionName": "US news",
+                "webPublicationDate": "2021-07-07T21:32:52Z",
+                "webTitle": "Will Trump’s big tech lawsuits succeed? Experts say chances are slim",
+                "webUrl": "https://www.theguardian.com/us-news/2021/jul/07/will-trumps-big-tech-lawsuits-succeed-experts-say-chances-are-slim",
+                "apiUrl": "https://content.guardianapis.com/us-news/2021/jul/07/will-trumps-big-tech-lawsuits-succeed-experts-say-chances-are-slim",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "business/2021/jul/28/dont-expect-post-brexit-britain-to-match-eus-fight-against-big-tech",
+                "type": "article",
+                "sectionId": "business",
+                "sectionName": "Business",
+                "webPublicationDate": "2021-07-28T16:43:42Z",
+                "webTitle": "Don’t expect post-Brexit Britain to match EU’s fight against big tech | Phillip Inman",
+                "webUrl": "https://www.theguardian.com/business/2021/jul/28/dont-expect-post-brexit-britain-to-match-eus-fight-against-big-tech",
+                "apiUrl": "https://content.guardianapis.com/business/2021/jul/28/dont-expect-post-brexit-britain-to-match-eus-fight-against-big-tech",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "digital-mindset/2021/jul/27/we-want-an-inclusive-student-experience-how-tech-can-help-universities-thrive",
+                "type": "article",
+                "sectionId": "digital-mindset",
+                "sectionName": "Digital mindset",
+                "webPublicationDate": "2021-07-27T11:45:44Z",
+                "webTitle": "‘We want an inclusive student experience’: how tech can help universities thrive",
+                "webUrl": "https://www.theguardian.com/digital-mindset/2021/jul/27/we-want-an-inclusive-student-experience-how-tech-can-help-universities-thrive",
+                "apiUrl": "https://content.guardianapis.com/digital-mindset/2021/jul/27/we-want-an-inclusive-student-experience-how-tech-can-help-universities-thrive",
+                "isHosted": false
+            }
+        ]
+    }
+}

@@ -3,8 +3,12 @@ const discord = require("discord.js");
 const fs = require("fs");
 const path = require("path")
 const mongoose = require("mongoose");
-
+const moment = require("moment")
+const registery = require("./utils/model/account")
+const news = require('./utils/functions/news')
 const prefix = process.env.PREFIX || "$";
+
+
 
 const client = new discord.Client();
 client.command = new discord.Collection();
@@ -12,7 +16,8 @@ client.command = new discord.Collection();
 const coolDown = 5 * 1000;
 const messagedRecently = new Set();
 
-console.log(process.env.DB)
+const sendRecently = new Set();
+
 //#region database connection 
 mongoose.connect(process.env.DB, {useNewUrlParser : true, useUnifiedTopology : true, bufferCommands : false, useCreateIndex : false, useFindAndModify: false})
            .then(res => console.log("connected"))
@@ -43,15 +48,62 @@ folders.forEach(async(folder) => {
 
 //#region discord-bot start
 
-//when the bot is ready its logs "bot online"
-client.on("ready", () => {
-
+client.on("ready", async() => {
   client.guilds.cache.forEach((guild) => {
       console.log(`${guild.name} | ${guild.id}`);
   });
+//#region timed message
+ //checks if the registery isnt empty
+ const serverRegisteries = await registery.find();
+ if(serverRegisteries.length !== 0)
+   {
+      //save the data locally in a json file
+      if(!fs.existsSync("./data.json"))
+      {
+         serverRegisteries.forEach(data => {
+            fs.writeFileSync("./data.json", JSON.stringify(data))
+         });         
+      }
+
+      //if the data is saved locally 
+      if(fs.existsSync('./data.json'))
+         {
+            //checks every 3 sec whether if its time to send the message 
+            //if it is then add the server id to the set so that it wont be send multiple times
+            setInterval(async()=>{
+               const currentTime = moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase();
+               let timing = JSON.parse(fs.readFileSync("./data.json"));
+               if(timing.time.toLowerCase() == currentTime && !sendRecently.has(timing._id))
+                 {
+                    console.log("running")
+                    await news(discord, client,timing.channelId )
+                    sendRecently.add(timing._id)
+                 }
+                 
+               }, 5000)
+               
+               //clear the set after a min   
+               setTimeout(() => {
+                  let timing = JSON.parse(fs.readFileSync("./data.json"));
+                  if(sendRecently.has(timing._id))
+                    {
+                        sendRecently.delete(timing._id)
+                        console.log("removed")                       
+                    }
+
+               }, 60000);
+               
+               
+
+         }
+   }
+
+
+//#endregion
 
       client.user.setActivity(" : '$ help'", { type: "WATCHING" });
       console.log("bot online");
+      console.log(`current time ${moment.tz(moment(), 'Asia/Dubai').format('h:mma').toLowerCase()}`);
 });
 
 //#endregion
@@ -60,7 +112,6 @@ client.on("ready", () => {
 //#region discord-command-handler
 client.on("message", (message) => {
  
-   
    //return null if the user is a bot or doesnt start with the prefix
    if (message.author.bot) return null;
 
@@ -129,6 +180,19 @@ client.on("message", (message) => {
    }
 });
  //#endregion
+
+
+
+//update the data.json file every 3 hours
+ setInterval(() => {
+   const serverRegisteries = registery.find()
+   serverRegisteries.forEach(data => {
+      fs.writeFileSync("./data.json", JSON.stringify(data))
+   });  
+ }, 1000 * 60 * 60 * 3);
+
+
+
 
  client.login(process.env.TOKEN);
 //#endregion

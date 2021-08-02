@@ -18,6 +18,10 @@ const serverRegistrySchema = new mongoose.Schema({
     channelId : {
         type : Number,
         required : true
+    },
+    time : {
+        type : String,
+        required: true
     }
 },
 {_id: false}
