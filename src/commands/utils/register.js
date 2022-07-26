@@ -17,7 +17,7 @@ module.exports = {
   async execute(message, discord, args, client) {
     //function to check if the timezone is valid
     //check if the user is admin
-    if (message.author.id !== message.guild.members.guild.ownerID) message.channel.send(`Only the admin can access this command 👮‍♂️`);
+    if (message.author.id !== message.guild.members.guild.ownerID) message.channel.send(`Only an Admin can access this command.`);
 
     //if param is not detected
     if (args[0] == "") 
@@ -33,7 +33,7 @@ module.exports = {
     {
       //checks if the server is already registered 
       const preMadeServerData = await registery.findById(message.guild.id);
-      if(preMadeServerData !== null) message.channel.send("Your already logged in 👮‍♂️");
+      if(preMadeServerData !== null) message.channel.send("You are already logged in.");
       
       //checks if the correct parameters are there and is valid
       if(preMadeServerData == null)
@@ -57,22 +57,22 @@ module.exports = {
                     }) 
                     
                     newServer.save()
-                    message.channel.send("Sever registered 😎")  
+                    message.channel.send("Sever registered.")  
                     const group = client.channels.cache.find(channel => channel.id == message.mentions.channels.first().id)
-                    group.send("@everyone```*Mute this channel to avoid spam notification*```\n Don't tell i didn't warn you")                     
+                    group.send("@everyone```*Mute this channel to avoid spam notification!*```\n Don't tell i didn't warn you")                     
                  } catch (error) {
                     message.channe.send(`500 error : ${error.message}`)
                  } 
                
                }else{
-                  message.channel.send("Invalid time❌")                  
+                  message.channel.send("Invalid time.")                  
                }
 
             }else {
-              message.channel.send("Invalid timezone ❌")          
+              message.channel.send("Invalid timezone.")          
             }
         }else{
-          message.channel.send("A channel is not mentioned ❌")
+          message.channel.send("A channel is not mentioned.")
         }
       }
     }
