@@ -16,7 +16,7 @@ module.exports = {
       card
         .setTitle("NWB help center")
         .setColor("#fa078d")
-        .setDescription("**Find the command u want by entering the category**")
+        .setDescription("**Find the command you want by entering the category.**")
         .setFooter("@NWB");
       
       folders.forEach((dir) => {
