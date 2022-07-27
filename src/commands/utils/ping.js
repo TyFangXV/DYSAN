@@ -11,7 +11,7 @@ module.exports = {
 
         // Basic embed
           var embed = new discord.MessageEmbed()
-          .setAuthor(`Your ping is ${ping}ms`)
+          .setAuthor(`Your ping is ${ping}ms.`)
           .setColor("#424242")
           
           // Then It Edits the message with the ping variable embed that you created
